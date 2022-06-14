@@ -47,17 +47,13 @@ app.get("/listings/:listingId", async (req, res) => {
 
 // Buy specific listing. Requires authentication.
 app.put("/listings/:listingId/buy", async (req, res) => {
+  const listing = await Listing.findByPk(req.params.listingId);
+
   // TODO: Get buyer email from auth, query Users table for buyer ID
-  await Listing.update(
-    { BuyerId: "REPLACE_ME" },
-    {
-      where: {
-        id: req.params.listingId,
-      },
-    }
-  );
+  await listing.update({ BuyerId: "REPLACE_ME" });
+
   // Respond to acknowledge update
-  res.end();
+  res.json(listing);
 });
 
 app.listen(PORT, () => {
