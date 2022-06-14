@@ -32,7 +32,7 @@ app.post("/listings", async (req, res) => {
     description: req.body.description,
     shippingDetails: req.body.shippingDetails,
     BuyerId: null,
-    SellerId: "REPLACE_ME", // TODO: Replace with Seller ID of authenticated seller
+    SellerId: 1, // TODO: Replace with seller ID of authenticated seller
   });
 
   // Respond with new listing
@@ -50,7 +50,7 @@ app.put("/listings/:listingId/buy", async (req, res) => {
   const listing = await Listing.findByPk(req.params.listingId);
 
   // TODO: Get buyer email from auth, query Users table for buyer ID
-  await listing.update({ BuyerId: "REPLACE_ME" });
+  await listing.update({ BuyerId: 1 }); // TODO: Replace with buyer ID of authenticated buyer
 
   // Respond to acknowledge update
   res.json(listing);
