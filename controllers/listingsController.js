@@ -22,8 +22,8 @@ class ListingsController extends BaseController {
         price: price,
         description: description,
         shippingDetails: shippingDetails,
-        BuyerId: null,
-        SellerId: 1, // TODO: Replace with seller ID of authenticated seller
+        buyerId: null,
+        sellerId: 1, // TODO: Replace with seller ID of authenticated seller
       });
 
       // Respond with new listing
